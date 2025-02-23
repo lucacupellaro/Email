@@ -11,15 +11,12 @@ const EmailCollector = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!selectedInterest) {
       setMessage('⚠️ Seleziona un interesse prima di iscriverti.');
       return;
     }
-
     setIsLoading(true);
     setMessage('');
-
     try {
       const response = await axios.post('http://localhost:5000/api/subscribe', {
         email,
@@ -46,7 +43,7 @@ const EmailCollector = () => {
       <div className="background-image"></div>
       <div className="form-card">
         <h2 className="title">Ottieni la tua risorsa gratuita!</h2>
-        { !isSubmitted ? (
+        {!isSubmitted ? (
           <form onSubmit={handleSubmit}>
             <input 
               type="email" 
@@ -80,7 +77,7 @@ const EmailCollector = () => {
             <p className="success-message">{message}</p>
             <button 
               onClick={handleDownload} 
-              className="submit-button"
+              className="submit-button downloadButton"
             >
               Scarica la risorsa
             </button>
